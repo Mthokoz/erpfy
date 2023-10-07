@@ -51,8 +51,9 @@ function submitting(){
         console.log("Customer Number:", customerNumber);
         console.log("Quantity:", quantity);
         console.log("Product Type:", productType);
+        console.log("Price in ZAR:", price);
         console.log("Date and Time:", formattedDate);
-        console.log()
+        
 
         recordTransaction(formattedDate, productType, quantity,price)
         printTransactions()
