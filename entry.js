@@ -2,7 +2,7 @@ export class Entry{
     constructor(date, account, quantity ,amount ){
         this.date = date;
         this.account = account;
-        this.dc = "Credit";
+        this.credit = "Credit";
         this.quantity = quantity;
         this.amount = amount;
         this.bank = "bank";
@@ -10,8 +10,8 @@ export class Entry{
     }
 
     toString () {
-        let string = this.date +" | "+ this.bank +" | "+ this.dc +" | "+ this.quantity+" | +"+ this.amount +"\n"
-                            + this.account+" | "+ this.debit+" | -"+ this.amount;
+        let string = this.date +" | "+ this.account+" | "+ this.debit +" | "+ this.quantity+" | -"+ this.amount +"\n"
+                            +this.bank +" | "+this.credit  +" | +"+ this.amount;
         console.log(string);
     }
 }
