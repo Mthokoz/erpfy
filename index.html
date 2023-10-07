@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Order Form</title>
+</head>
+
+<body>
+    <h1>Customer Order Form</h1>
+    <form id="orderForm">
+        <!-- Customer Name (String) -->
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" name="customerName" required><br><br>
+
+        <!-- Customer Number (Cellphone) -->
+        <label for="customerNumber">Customer Cellphone:</label>
+        <input type="tel" id="customerNumber" name="customerNumber" required pattern="[+]?[0-9]{1,3}[-.\s]?[()]?[0-9]{3}[-.\s]?[0-9]{3}[-.\s]?[0-9]{4}" placeholder="+1 (123) 456-7890"><br><br>
+
+        <!-- Product Type (Dropdown Menu) -->
+        <label for="productType">Product Type:</label>
+        <select id="productType" name="productType">
+            <option value="brick">Brick</option>
+            <option value="sand">Sand</option>
+        </select><br><br>
+
+        <!-- Quantity (Integer) -->
+        <label for="quantity">Quantity (Integer):</label>
+        <input type="number" id="quantity" name="quantity" required><br><br>
+
+        <!-- Current Date and Time -->
+        <label for="Price">Price:</label>
+        <input type="text" id="Price" name="Price" readonly><br><br>
+
+        <!-- Current Date and Time -->
+        <label for="dateTime">Date and Time:</label>
+        <input type="text" id="dateTime" name="dateTime" readonly><br><br>
+
+        <!-- Submit Button -->
+        <button id="submit" type="submit">Submit</button>
+    </form>
+    <script type="module" src="app.js"></script>
+</body>
+
+
+</html>
