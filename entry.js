@@ -1,5 +1,6 @@
 export class Entry{
     constructor(date, account, quantity ,amount ){
+        this.Id = Id;
         this.date = date;
         this.account = account;
         this.credit = "Credit";
