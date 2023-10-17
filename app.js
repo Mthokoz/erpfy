@@ -1,6 +1,10 @@
 import { Journal } from './journal.js';
 import  {Customer }  from "./customer.js";
 
+//const url = new URL(location.href);
+
+const APILINK = "http://localhost:3000/api/v1/trans/";
+
 let customerName = document.getElementById("customerName");
 let customerNumber = document.getElementById("customerNumber");
 let quantity = document.getElementById("quantity");
@@ -45,6 +49,21 @@ function submitting(){
 
         // create customer
         createCustomer(0, customerName, customerNumber);
+        
+        //send to back end 
+        fetch(APILINK + "new", {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"entryId": 2, "date": formattedDate, "account": productType, "credit": "Credit", "quantity": quantity , "amount": price, "bank": "bank", "debit": "Debit"})
+          }).then(res => res.json())
+            .then(res => {
+              console.log(res)
+              location.reload();
+            });
+
     
         // You can now use these values as needed, e.g., send them to a server, process, or display them.
         console.log("Customer Name:", customerName);
@@ -55,7 +74,7 @@ function submitting(){
         console.log("Date and Time:", formattedDate);
         
 
-        recordTransaction(formattedDate, productType, quantity,price)
+        recordTransaction(formattedDate, productType, quantity,price, APILINK)
         printTransactions()
     });
 }
@@ -65,9 +84,9 @@ function createCustomer(id, name, cellnumber){
     customers.push(customer);
 }
 
-function recordTransaction(date, account, quantity,price ){
-    
-    journal.addEntry(date, account, quantity, price)
+function recordTransaction(date, account, quantity,price, APILINK ){
+    journal.addEntry(date, account, quantity, price, APILINK);
+    console.log("recording transaction")
 }
 
 function printTransactions(){

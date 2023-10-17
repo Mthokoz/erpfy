@@ -12,7 +12,10 @@ export class Journal{
         }
     }
 
-    addEntry(date, account, quantity, amount){
-        this.entries.push(new Entry(date, account, quantity, amount))
+    addEntry(date, account, quantity, amount, APILINK){
+        const entry = new Entry(this.entries.length, date, account, quantity, amount);
+        this.entries.push(entry);
+        console.log("uploading")
+        entry.upload(APILINK);
     }
 }

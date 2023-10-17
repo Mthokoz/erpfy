@@ -4,9 +4,17 @@ import transDAO from "../dao/transDAO.js";
 export default class transController {
     static async apiPostEntry( req, res, next){
         try{
-            const entry = req.body.entry;
+            const entryId = parseInt(req.body.ID);
+            const date = req.body.date;
+            const account = req.body.account;
+            const credit = req.body.credit;
+            const quantity = parent(req.body.quantity);
+            const amount = parseInt(req.body.amount);
+            const bank = req.body.bank;
+            const debit = req.body.debit;
 
-            const entryRespone = await transDAO.addEntry( entry);
+
+            const entryRespone = await transDAO.addEntry(entryId, date, account, credit, quantity, amount, bank, debit);
 
             res.json({ status: "success"});
         }catch (e) {
@@ -16,11 +24,11 @@ export default class transController {
 
     static async apiGetEntry( req, res, next){
         try {
-            let entryId = req.params.id ||{};
+            let entryId = req.params.ID ||{};
             let entry = await transDAO.getEntry(entryId);
 
             if( !entry ){
-                res.status(404).json({error: "Entry Not found//Controller"});
+                res.status(404).json({error: "apigetEntry no entry found"});
                 return;
             }
             res.json(entry)

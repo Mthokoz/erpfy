@@ -1,6 +1,6 @@
 export class Entry{
-    constructor(date, account, quantity ,amount ){
-        this.Id = Id;
+    constructor(ID, date, account, quantity ,amount ){
+        this.Id = ID;
         this.date = date;
         this.account = account;
         this.credit = "Credit";
@@ -14,5 +14,20 @@ export class Entry{
         let string = this.date +" | "+ this.account+" | "+ this.debit +" | "+ this.quantity+" | -"+ this.amount +"\n"
                             +this.bank +" | "+this.credit  +" | +"+ this.amount;
         console.log(string);
+    }
+
+    upload(APILINK){
+        fetch(APILINK + "new", {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"entryId": this.ID, "date": this.date, "account": this.account, "credit": this.credit, "quantity": this.quantity , "amount": this.amount, "bank": this.bank, "debit": this.debit})
+          }).then(res => res.json())
+            .then(res => {
+              console.log(res)
+              location.reload();
+            });
     }
 }

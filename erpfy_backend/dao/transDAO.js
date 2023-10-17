@@ -4,28 +4,28 @@ const ObjectId = mongodb.ObjectId;
 let entries;
 
 export default class transDAO {
-    static async inject(conn){
-        if(entry){
+    static async injectDB(conn){
+        if(entries){
             return;
         }
         try {
-            reviews = await conn.db("entries").collection("entries");
+            entries = await conn.db("erpfy").collection("transactions");
         }catch(e) {
             console.error(`Unable to establish collection handles in userDAO: ${e}`);
         }
     }
     //Will receive Entry object if possible intead of attributes of an Entry
-    static async addEntry(Entry){
+    static async addEntry(Id, Date, Account, Credit, Quantity, Amount, Bank, Debit){
         try{
             const entryDoc = {
-                entryId: Entry.Id,
-                date : Entry.date,
-                account : Entry.account,
-                credit : Entry.credit,
-                quantity : Entry.quantity,
-                amount : Entry.amount,
-                bank : Entry.bank,
-                debit : Entry.debit
+                entryId: Id,
+                date : Date,
+                account : Account,
+                credit : Credit,
+                quantity : Quantity,
+                amount : Amount,
+                bank : Bank,
+                debit : Debit
             }
             console.log("adding");
             return await reviews.insertOne(entryDoc);
