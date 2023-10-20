@@ -15,20 +15,11 @@ export default class transDAO {
         }
     }
     //Will receive Entry object if possible intead of attributes of an Entry
-    static async addEntry(Id, Date, Account, Credit, Quantity, Amount, Bank, Debit){
+    static async addEntry(payload){
         try{
-            const entryDoc = {
-                entryId: Id,
-                date : Date,
-                account : Account,
-                credit : Credit,
-                quantity : Quantity,
-                amount : Amount,
-                bank : Bank,
-                debit : Debit
-            }
+            
             console.log("adding");
-            return await reviews.insertOne(entryDoc);
+            return await entries.insertOne(payload);
         }catch (e) {
             console.error(`Unable to post entry; ${e}`);
             return{ error: e};

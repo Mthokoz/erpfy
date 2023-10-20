@@ -17,13 +17,14 @@ export class Entry{
     }
 
     upload(APILINK){
+      const payload = {"entryId": this.Id, "date": this.date, "account": this.account, "credit": this.credit, "quantity": this.quantity , "amount": this.amount, "bank": this.bank, "debit": this.debit}
         fetch(APILINK + "new", {
             method: 'POST',
             headers: {
               'Accept': 'application/json, text/plain, */*',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({"entryId": this.ID, "date": this.date, "account": this.account, "credit": this.credit, "quantity": this.quantity , "amount": this.amount, "bank": this.bank, "debit": this.debit})
+            body: JSON.stringify(payload)
           }).then(res => res.json())
             .then(res => {
               console.log(res)

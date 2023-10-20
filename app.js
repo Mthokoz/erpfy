@@ -49,20 +49,31 @@ function submitting(){
 
         // create customer
         createCustomer(0, customerName, customerNumber);
+
+        // const payload = {
+        //     "entryId": 2,
+        //     "date": formattedDate,
+        //     "account": productType,
+        //     "credit": "Credit",
+        //     "quantity": quantity,
+        //     "amount": price,
+        //     "bank": "bank",
+        //     "debit": "Debit"
+        // };
         
-        //send to back end 
-        fetch(APILINK + "new", {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json, text/plain, */*',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({"entryId": 2, "date": formattedDate, "account": productType, "credit": "Credit", "quantity": quantity , "amount": price, "bank": "bank", "debit": "Debit"})
-          }).then(res => res.json())
-            .then(res => {
-              console.log(res)
-              location.reload();
-            });
+        // //send to back end 
+        // fetch(APILINK + "new", {
+        //     method: 'POST',
+        //     headers: {
+        //       'Accept': 'application/json, text/plain, */*',
+        //       'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(payload)
+        //   }).then(res => res.json())
+        //     .then(res => {
+        //       console.log(res)
+        //       location.reload();
+        //     });
 
     
         // You can now use these values as needed, e.g., send them to a server, process, or display them.

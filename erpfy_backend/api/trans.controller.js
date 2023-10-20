@@ -4,17 +4,9 @@ import transDAO from "../dao/transDAO.js";
 export default class transController {
     static async apiPostEntry( req, res, next){
         try{
-            const entryId = parseInt(req.body.ID);
-            const date = req.body.date;
-            const account = req.body.account;
-            const credit = req.body.credit;
-            const quantity = parent(req.body.quantity);
-            const amount = parseInt(req.body.amount);
-            const bank = req.body.bank;
-            const debit = req.body.debit;
+            const payload = req.body;
 
-
-            const entryRespone = await transDAO.addEntry(entryId, date, account, credit, quantity, amount, bank, debit);
+            const entryResponse = await transDAO.addEntry(payload)
 
             res.json({ status: "success"});
         }catch (e) {
